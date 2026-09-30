@@ -19,7 +19,7 @@
     <complexType name="Adresse">
         <sequence>
             <element name="etage" type="int" minOccurs="0" maxOccurs="1"/>
-            <element name="numero" type="string" minOccurs="0" maxOccurs="1"/>
+            <element name="numero" type="ca:Numero" minOccurs="0" maxOccurs="1"/>
             <element name="rue" type="string"/>
             <element name="codePostal" type="ca:CodePostal"/>
             <element name="ville" type="string"/>
@@ -60,7 +60,7 @@
             <element name="prenom" type="string"/>
             <element name="photo" type="anyURI"/>
         </sequence>
-        <attribute name="id" type="string" use="required"/>
+        <attribute name="id" type="ca:idInfirmier" use="required"/>
     </complexType>
 
     <complexType name="Patients">
