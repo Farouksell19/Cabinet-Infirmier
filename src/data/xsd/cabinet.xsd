@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema
         xmlns="http://www.w3.org/2001/XMLSchema"
-        xmlns:ca="http://www.univ-grenoble-alpes.fr/cabinet"
-        targetNamespace="http://www.univ-grenoble-alpes.fr/cabinet"
+        xmlns:ca="http://www.univ-grenoble-alpes.fr/l3miage/medical"
+        targetNamespace="http://www.univ-grenoble-alpes.fr/l3miage/medical"
         elementFormDefault="qualified">
 
     <element name="cabinet" type="ca:Cabinet"/>
@@ -26,6 +26,14 @@
         </sequence>
     </complexType>
 
+    <!-- J'ai modifier le type de numero Adresse depuis number vers Numéro pour faire la restruction du pattern pour confirmer que  le numéro suive les conditions de la numération-->
+
+    <simpleType name="Numero">
+        <restriction base="string">
+            <pattern value="[0-9]+"/>
+        </restriction>
+    </simpleType>
+
     <simpleType name="CodePostal">
         <restriction base="string">
             <pattern value="[0-9]{5}"/>
@@ -38,11 +46,19 @@
         </sequence>
     </complexType>
 
+    <!-- J'ai modifier le type de id Infirmier depuis string vers idInfirmier pour faire la restruction du pattern pour coniermer que  l'id n'accept aucune chose sauf les chiffres-->
+
+    <simpleType name="idInfirmier">
+        <restriction base="string">
+            <pattern value="[0-9]{3}"/>
+        </restriction>
+    </simpleType>
+
     <complexType name="Infirmier">
         <sequence>
             <element name="nom" type="string"/>
             <element name="prenom" type="string"/>
-            <element name="photo" type="string"/>
+            <element name="photo" type="anyURI"/>
         </sequence>
         <attribute name="id" type="string" use="required"/>
     </complexType>
@@ -83,11 +99,17 @@
             <element name="acte" type="ca:Acte" maxOccurs="unbounded"/>
         </sequence>
         <attribute name="date" type="date" use="required"/>
-        <attribute name="intervenant" type="string" use="required"/>
+        <attribute name="intervenant" type="ca:idInfirmier" use="required"/>
     </complexType>
 
     <complexType name="Acte">
-        <attribute name="id" type="string" use="required"/>
+        <attribute name="id" type="ca:idActe" use="required"/>
     </complexType>
+
+    <simpleType name="idActe">
+        <restriction base="string">
+            <pattern value="[0-9]{3}"/>
+        </restriction>
+    </simpleType>
 
 </schema>
