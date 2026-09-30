@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+        xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:ca="http://www.univ-grenoble-alpes.fr/cabinet"
+        targetNamespace="http://www.univ-grenoble-alpes.fr/cabinet"
+        elementFormDefault="qualified">
+
+    <element name="cabinet" type="ca:Cabinet"/>
+
+    <complexType name="Cabinet">
+        <sequence>
+            <element name="nom" type="string"/>
+            <element name="adresse" type="ca:Adresse"/>
+            <element name="infirmiers" type="ca:Infirmiers"/>
+            <element name="patients" type="ca:Patients"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="Adresse">
+        <sequence>
+            <element name="etage" type="int" minOccurs="0" maxOccurs="1"/>
+            <element name="numero" type="string" minOccurs="0" maxOccurs="1"/>
+            <element name="rue" type="string"/>
+            <element name="codePostal" type="ca:CodePostal"/>
+            <element name="ville" type="string"/>
+        </sequence>
+    </complexType>
+
+    <simpleType name="CodePostal">
+        <restriction base="string">
+            <pattern value="[0-9]{5}"/>
+        </restriction>
+    </simpleType>
+
+    <complexType name="Infirmiers">
+        <sequence>
+            <element name="infirmier" type="ca:Infirmier" minOccurs="3" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="Infirmier">
+        <sequence>
+            <element name="nom" type="string"/>
+            <element name="prenom" type="string"/>
+            <element name="photo" type="string"/>
+        </sequence>
+        <attribute name="id" type="string" use="required"/>
+    </complexType>
+
+    <complexType name="Patients">
+        <sequence>
+            <element name="patient" type="ca:Patient" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="Patient">
+        <sequence>
+            <element name="nom" type="string"/>
+            <element name="prenom" type="string"/>
+            <element name="sexe" type="ca:Sexe"/>
+            <element name="naissance" type="date"/>
+            <element name="numero" type="ca:NIR"/>
+            <element name="adresse" type="ca:Adresse"/>
+            <element name="visite" type="ca:Visite" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+    <simpleType name="Sexe">
+        <restriction base="string">
+            <enumeration value="M"/>
+            <enumeration value="F"/>
+        </restriction>
+    </simpleType>
+
+    <simpleType name="NIR">
+        <restriction base="string">
+            <pattern value="[12][0-9]{14}"/>
+        </restriction>
+    </simpleType>
+
+    <complexType name="Visite">
+        <sequence>
+            <element name="acte" type="ca:Acte" maxOccurs="unbounded"/>
+        </sequence>
+        <attribute name="date" type="date" use="required"/>
+        <attribute name="intervenant" type="string" use="required"/>
+    </complexType>
+
+    <complexType name="Acte">
+        <attribute name="id" type="string" use="required"/>
+    </complexType>
+
+</schema>

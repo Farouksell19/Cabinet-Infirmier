@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cabinet xmlns="http://www.univ-grenoble-alpes.fr/cabinet"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.univ-grenoble-alpes.fr/cabinet ../xsd/cabinet.xsd">
+
+    <nom>Cabinet d'Infirmiers de La Tronche</nom>
+
+    <adresse>
+        <etage>1</etage>
+        <numero>12</numero>
+        <rue>Avenue Maquis du Grésivaudan</rue>
+        <codePostal>38700</codePostal>
+        <ville>La Tronche</ville>
+    </adresse>
+
+    <infirmiers>
+        <infirmier id="001">
+            <nom>Alami</nom>
+            <prenom>Rachid</prenom>
+            <photo>rami.jpg</photo>
+        </infirmier>
+        <infirmier id="002">
+            <nom>Dupond</nom>
+            <prenom>Pierre</prenom>
+            <photo>pdupond.jpg</photo>
+        </infirmier>
+        <infirmier id="003">
+            <nom>ben</nom>
+            <prenom>chikh</prenom>
+            <photo>bchikh.jpg</photo>
+        </infirmier>
+    </infirmiers>
+
+    <patients>
+        <!-- Patient 1 : Elvire Orouge (Injections) -->
+        <patient>
+            <nom>Orouge</nom>
+            <prenom>Elvire</prenom>
+            <sexe>F</sexe>
+            <naissance>1989-05-14</naissance>
+            <numero>289053870012345</numero>
+            <adresse>
+                <etage>2</etage>
+                <numero>5</numero>
+                <rue>Rue des Fleurs</rue>
+                <codePostal>38700</codePostal>
+                <ville>La Tronche</ville>
+            </adresse>
+            <visite date="2023-10-15" intervenant="001">
+                <acte id="101"/>
+            </visite>
+        </patient>
+
+        <!-- Patient 2 : Oscare Pien (Prise de sang) -->
+        <patient>
+            <nom>Pien</nom>
+            <prenom>Oscare</prenom>
+            <sexe>M</sexe>
+            <naissance>1975-11-20</naissance>
+            <numero>175113870067890</numero>
+            <adresse>
+                <numero>18</numero>
+                <rue>Boulevard des Alpes</rue>
+                <codePostal>38700</codePostal>
+                <ville>La Tronche</ville>
+            </adresse>
+            <visite date="2023-10-16" intervenant="002">
+                <acte id="102"/>
+            </visite>
+        </patient>
+
+        <!-- Patient 3 : Xavier Kapoëtla (Soins de pansement) -->
+        <patient>
+            <nom>Kapoëtla</nom>
+            <prenom>Xavier</prenom>
+            <sexe>M</sexe>
+            <naissance>1962-03-08</naissance>
+            <numero>162033870011223</numero>
+            <adresse>
+                <etage>4</etage>
+                <numero>42</numero>
+                <rue>Chemin du Doyen Gosse</rue>
+                <codePostal>38700</codePostal>
+                <ville>La Tronche</ville>
+            </adresse>
+            <visite date="2023-10-17" intervenant="001">
+                <acte id="103"/>
+            </visite>
+        </patient>
+    </patients>
+
+</cabinet>
